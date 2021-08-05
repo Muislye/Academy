@@ -2,6 +2,9 @@ package com.accenture.Academic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
+import com.accenture.Academic.controller.Controller;
 
 @SpringBootApplication
 public class AcademicApplication {

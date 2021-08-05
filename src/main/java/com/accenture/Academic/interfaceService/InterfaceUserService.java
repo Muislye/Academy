@@ -1,9 +1,10 @@
-package interfaceService;
+package com.accenture.Academic.interfaceService;
 
-import model.User;
+import com.accenture.Academic.model.User;
 
 import java.util.List;
 import java.util.Optional;
+
 
 public interface InterfaceUserService {
     public List<User> get();
