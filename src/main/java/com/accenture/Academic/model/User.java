@@ -51,27 +51,20 @@ public class User {
 	
 	
 	public User() {
+		
 	}
 	
-	
-
 	public int getIdUser() {
 		return idUser;
 	}
-
-
 
 	public void setIdUser(int idUser) {
 		this.idUser = idUser;
 	}
 
-
-
 	public String getBirthdate() {
 		return birthdate;
 	}
-
-
 
 	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;

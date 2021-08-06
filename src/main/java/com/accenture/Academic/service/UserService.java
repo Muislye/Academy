@@ -35,9 +35,9 @@ public class UserService implements InterfaceUserService {
         }
         return res;
     }
-
+    
     @Override
     public void delete(int idUser) {
     	data.deleteById(idUser);
-    } 
+    }
 }

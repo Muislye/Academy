@@ -43,6 +43,7 @@ public class Controller {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
 		String strDate = dateFormat.format(date);
 		birth = strDate;
+		System.out.println(u);
 		service.save(u);
 		return "redirect:/get";
 	}
