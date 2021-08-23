@@ -1,6 +1,7 @@
 package com.accenture.Academic.model;
 
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,10 +12,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.sun.istack.NotNull;
+
 
 @Entity
 @Table(name = "user")
@@ -24,11 +27,11 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_user")
 	private int idUser;
-	@NotNull
 	@Column(name = "first_name")
-	private String firstName;
 	@NotNull
+	private String firstName;
 	@Column(name = "last_name")
+	@NotNull
 	private String lastName;
 	@NotNull
 	private String phone;
@@ -36,6 +39,7 @@ public class User {
 	private String email;
 	@NotNull
 	private String address;
+	@NotNull
 	String birthdate;
 	@NotNull
 	private String resume;
@@ -54,6 +58,25 @@ public class User {
 		
 	}
 	
+	
+	
+	public User(int idUser, String firstName, String lastName, String phone, String email, String address,
+			String birthdate, String resume, Date createdDate, Date updateDate) {
+		super();
+		this.idUser = idUser;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phone = phone;
+		this.email = email;
+		this.address = address;
+		this.birthdate = birthdate;
+		this.resume = resume;
+		this.createdDate = createdDate;
+		this.updateDate = updateDate;
+	}
+
+
+
 	public int getIdUser() {
 		return idUser;
 	}
@@ -134,5 +157,31 @@ public class User {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+
+	@Override
+	public String toString() {
+		return "User [idUser=" + idUser + ", firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone
+				+ ", email=" + email + ", address=" + address + ", birthdate=" + birthdate + ", resume=" + resume
+				+ ", createdDate=" + createdDate + ", updateDate=" + updateDate + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idUser);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return idUser == other.idUser;
+	}
+	
+	
 
 }
