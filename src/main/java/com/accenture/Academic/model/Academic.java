@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,7 +22,7 @@ public class Academic {
 	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(fetch = FetchType.LAZY)
 	@Column(name = "id_academy")
 	private int idAcademy;
@@ -30,19 +31,19 @@ public class Academic {
 	private String status;
 	
 	@JoinColumn(name="id_user", unique = true)
-	@OneToMany(cascade = CascadeType.ALL)
-	private java.util.Set<User> users;
+	@ManyToOne//(cascade = CascadeType.ALL)
+	private User users;
 	
 	@JoinColumn(name="id_courses", unique = true)
-	@OneToMany(cascade = CascadeType.ALL)
-	private java.util.Set<Courses> courses;
+	@ManyToOne//(cascade = CascadeType.ALL)
+	private Courses courses;
 
 	public Academic() {
 		super();
 	}
 	
 
-	public Academic(int idAcademy, String name, String status, Set<User> users, Set<Courses> courses) {
+	public Academic(int idAcademy, String name, String status, User users, Courses courses) {
 		super();
 		this.idAcademy = idAcademy;
 		this.name = name;
@@ -76,20 +77,20 @@ public class Academic {
 		this.status = status;
 	}
 
-	public java.util.Set<User> getUsers() {
+	public User getUsers() {
 		System.out.println("Print del get"+users);
 		return users;
 	}
 
-	public void setUsers(java.util.Set<User> users) {
+	public void setUsers(User users) {
 		this.users = users;
 	}
 
-	public java.util.Set<Courses> getCourses() {
+	public Courses getCourses() {
 		return courses;
 	}
 
-	public void setCourses(java.util.Set<Courses> courses) {
+	public void setCourses(Courses courses) {
 		this.courses = courses;
 	}
 

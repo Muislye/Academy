@@ -1,12 +1,16 @@
 package com.accenture.Academic.controller;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -48,10 +52,24 @@ public class AcademicController {
 	
 	@PostMapping("/saveAcademic")
 	public String saveAcademy(@Validated Academic a, Model model) {
-		System.out.println("Este es lo que se va a guardar: " +a.toString());
-		System.out.println(model);
-		System.out.println(a.getUsers());
 		academic.save(a);
+		return "redirect:/academic";
+	}
+	@GetMapping("/updateAcademic/{idAcademy}")
+	public String edit(@PathVariable int idAcademy, Model model) {
+		Optional<Academic> academy = academic.findById(idAcademy);
+		model.addAttribute("academic", academy);
+		List<User> users = usersS.get();
+		model.addAttribute("users", users);
+		List<Courses> courses = coursesS.get();
+		model.addAttribute("courses", courses);
+		return "NewAcademic";
+	}
+	
+	@GetMapping("/deleteAcademic/{idAcademy}")
+	public String delete(Model model, @PathVariable int idAcademy) {
+		System.out.println(idAcademy);
+		academic.deleteById(idAcademy);
 		return "redirect:/academic";
 	}
 }

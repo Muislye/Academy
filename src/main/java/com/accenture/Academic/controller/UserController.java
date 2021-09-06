@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @RequestMapping
 @org.springframework.stereotype.Controller
-public class Controller {
+public class UserController {
 
 	@Autowired
 	private InterfaceUserService service;
@@ -56,6 +56,7 @@ public class Controller {
 	
 	@GetMapping("/delete/{idUser}")
 	public String delete(Model model, @PathVariable int idUser) {
+		System.out.println("Esto es lo que imprime el delete: "+idUser);
 		service.delete(idUser);
 		return "redirect:/get";
 	}

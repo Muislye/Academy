@@ -24,7 +24,7 @@ import com.sun.istack.NotNull;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_user")
 	private int idUser;
 	@Column(name = "first_name")

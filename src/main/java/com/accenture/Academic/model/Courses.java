@@ -15,7 +15,7 @@ public class Courses {
 	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_courses")
 	private int idCourses;
 	

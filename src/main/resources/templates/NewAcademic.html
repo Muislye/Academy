@@ -23,14 +23,20 @@
                         <label>Academic name</label>
                         <input th:field="*{name}" type="text" class="form-control">
                     </div>
+
                     <div class="form-group">
-                        <label>Status</label>
-                        <input th:field="*{status}" type="text" class="form-control">
+                    	<label th:text="Status"></label>
+                    	<select th:field="${academic.status}">
+                    	<option value="ToDo"> ToDo</option>
+                    	<option value="In Progress">In progress</option>
+                    	<option value="Blocked"> Blocked</option>
+                    	<option value="Completed"> Completed</option>
+                    	</select><br>
                     </div>
                     
                     <div class="form-group">
                         <label th:text="Users"></label>
-                        <select th:field="${academic.users}" multiple="multiple">
+                        <select th:field="${academic.users}">
                         <option th:each="user :${users}" th:value="${user.idUser}" th:text="${user.firstName}">
                         </option>
                         </select><br>
@@ -38,21 +44,18 @@
                    
                     <div class="form-group">
                         <label th:text="Courses"></label>
-                        <select th:field="${academic.courses}" multiple="multiple">
+                        <select th:field="${academic.courses}">
                         <option th:each="courses :${courses}" th:value="${courses.idCourses}" th:text="${courses.name}">
                         </option>
                         </select><br>
                     </div>
-                    
                 </div>
                 <div class="card-footer">
                     <input type="submit" value="Save" class="btn btn-success">
                 </div>
             </div>
         </form>
-
         </div>
 </div>
-
 </body>
 </html>
